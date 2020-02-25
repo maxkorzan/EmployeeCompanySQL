@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Employee List</h1>
+<div th:each="employee : ${employees}">
+    <h2 th:text="${employee.name}"></h2>
+    <h6 th:inline="text">is called NAME: [[${employee.name}]]</h6>
+    <ul>
+        <th:block th:object="${employee.company}">
+            <li th:inline="text">works for COMPANY: <b>[[*{name}]]</b></li>
+        </th:block>
+    </ul>
+
+</div>
+
+
+
+</body>
+</html>
