@@ -10,7 +10,7 @@ public class Employee {
     private String name;
     private String position;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "company_id")
     private Company company;
 

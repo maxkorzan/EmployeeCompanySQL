@@ -1,6 +1,7 @@
 package com.max.employeecompanysql;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Company {
@@ -9,8 +10,8 @@ public class Company {
     private long id;
     private String name;
 
-    @OneToOne(mappedBy = "company")
-    private Employee employee;
+    @OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
+    private Set<Employee> employees;
 
 
     public long getId() {
@@ -29,11 +30,11 @@ public class Company {
         this.name = name;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public Set<Employee> getEmployees() {
+        return employees;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
     }
 }
