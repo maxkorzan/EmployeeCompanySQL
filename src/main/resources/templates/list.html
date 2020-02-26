@@ -17,6 +17,23 @@
 <a href="/addCompany"><button type="button" class="btn btn-primary">Add Company</button></a>
 <a href="/addEmployee"><button type="button" class="btn btn-primary">Add Employee</button></a><br><br>
 
+
+<h1>Employee List</h1>
+<div th:each="company : ${companies}">
+
+    <h4 th:text="${company.name}"></h4>
+    <ul th:each="employee: ${company.employees}">
+        <li th:text="${employee.name}"></li>
+        <li th:text="${employee.position}"></li>
+        <a class="change" th:href="@{/update/{id}(id=${employee.id})}">Update</a>
+        <a class="change" th:href="@{/detail/{id}(id=${employee.id})}">Details</a>
+        <a class="change" th:href="@{/delete/{id}(id=${employee.id})}">Delete</a>
+    </ul>
+</div>
+
+
+
+
 <table class="table table-hover table-borderless">
     <thead>
         <tr>
