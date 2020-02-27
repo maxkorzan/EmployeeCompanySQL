@@ -17,23 +17,6 @@
 <a href="/addCompany"><button type="button" class="btn btn-primary">Add Company</button></a>
 <a href="/addEmployee"><button type="button" class="btn btn-primary">Add Employee</button></a><br><br>
 
-
-<h1>Employee List</h1>
-<div th:each="company : ${companies}">
-
-    <h4 th:text="${company.name}"></h4>
-    <ul th:each="employee: ${company.employees}">
-        <li th:text="${employee.name}"></li>
-        <li th:text="${employee.position}"></li>
-        <a class="change" th:href="@{/update/{id}(id=${employee.id})}">Update</a>
-        <a class="change" th:href="@{/detail/{id}(id=${employee.id})}">Details</a>
-        <a class="change" th:href="@{/delete/{id}(id=${employee.id})}">Delete</a>
-    </ul>
-</div>
-
-
-
-
 <table class="table table-hover table-borderless">
     <thead>
         <tr>
@@ -54,6 +37,33 @@
                 <a th:href="@{/delete/{id}(id=${employee.id})}"><button type="button" class="btn btn-sm btn-outline-danger">Delete</button></a>
             </td>
         </tr>
+    </tbody>
+</table>
+
+<h1>James' Approach</h1>
+<table class="table table-hover table-borderless">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Company</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <div th:each="company : ${companies}">
+        <tr th:each="employee : ${company.employees}">
+            <td th:text="${employee.name}"></td>
+            <td th:text="${employee.position}"></td>
+            <td th:text="${company.name}"></td>
+            <td>
+                <a th:href="@{/update/{id}(id=${employee.id})}"><button type="button" class="btn btn-sm btn-outline-primary">Update</button></a>
+                <a th:href="@{/detail/{id}(id=${employee.id})}"><button type="button" class="btn btn-sm btn-outline-info">Details</button></a>
+                <a th:href="@{/delete/{id}(id=${employee.id})}"><button type="button" class="btn btn-sm btn-outline-danger">Delete</button></a>
+            </td>
+        </tr>
+    </div>
     </tbody>
 </table>
 
