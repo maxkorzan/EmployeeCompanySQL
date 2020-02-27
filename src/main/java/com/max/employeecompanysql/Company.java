@@ -10,7 +10,7 @@ public class Company {
     private long id;
     private String name;
 
-    @OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Employee> employees;
 
 
